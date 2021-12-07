@@ -5,161 +5,104 @@ import {
 import { StyleSheet, Text, View, Image, Alert, Button } from 'react-native';
 import { ScrollView, TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 import { colors } from '../styles/variables';
-import { AbacaxiIcon, BananaIcon, CarrinhoIcon, LixeiraIcon, MangaIcon, MaçaIcon, PeraIcon, LupaIcon } from '../components/Icons';
+import { AbacaxiIcon, BananaIcon, MangaIcon, MaçaIcon, PeraIcon, DinheiroIcon } from '../components/Icons';
 
-const Home = () => {
-    const navigation = useNavigation();
+const Carrinho = () => {
 
-    const [contAbacaxi, setContAbacaxi] = useState(0);
-    const [contMaça, setContMaça] = useState(0);
-    const [contPera, setContPera] = useState(0);
-    const [contBanana, setContBanana] = useState(0);
-    const [contManga, setContManga] = useState(0);
-    const [mostrarCampo, setMostrarCampo] = useState(false);
-
-
-    function handleAddAbacaxi() {
-        setContAbacaxi(contAbacaxi + 1);
-    }
-
-
-    function handleAddMaça() {
-        setContMaça(contMaça + 1);
-    }
-
-
-    function handleAddPera() {
-        setContPera(contPera + 1);
-    }
-
-    function handleAddBanana() {
-        setContBanana(contBanana + 1);
-    }
-
-    function handleAddManga() {
-        setContManga(contManga + 1);
-    }
-
-    function ShowInputSearch() {
-        setMostrarCampo(!mostrarCampo);
-    }
-
-    function OpenAlertDelete() {
+    function handleAddCupom(){
         Alert.alert(
-            "Quer mesmo deletar?",
-            "Se você deletar, irá retirar todas as frutas selecionadas.",
+            "Cupom Indisponível",
+            "Tente novamente mais tarde",
+            [
+              { text: "OK", onPress: () => console.log("Pressionou cupom") }
+            ]
+          );
+    }
+
+    function handleConfirmPay(){
+        Alert.alert(
+            "Podemos fechar seu pedido?",
+            "Você tem certeza da sua compra?",
             [
                 {
                     text: "Cancelar",
-                    onPress: () => console.log("Cancelei"),
+                    onPress: () => console.log("Cancelou Pedido"),
                     style: "cancel"
-                },
-                { text: "Deletar", onPress: (handleDeleteFruits) }
+                  },
+              { text: "Comprar", onPress: () => console.log("Pedido Efetuado") }
             ]
-        );
+          );
     }
-
-    function handleDeleteFruits() {
-        setContAbacaxi(contAbacaxi === 0);
-        setContMaça(contAbacaxi === 0);
-        setContPera(contAbacaxi === 0);
-        setContBanana(contAbacaxi === 0);
-        setContManga(contAbacaxi === 0);
-    }
-
-    function openCart(){
-        navigation.navigate('Carrinho')
-    }
-
-    useLayoutEffect(() => {
-        navigation.setOptions({
-            headerRight: () => (
-                <TouchableOpacity onPress={ShowInputSearch}>
-                    <Image source={LupaIcon} style={styles.lupaIcon} />
-                </TouchableOpacity>
-            ),
-        })
-    })
 
     return (
         <View style={styles.viewResumeFruits}>
-            {mostrarCampo &&
-                <View>
-                    <TextInput style={styles.searchInput}
-                        placeholder='Digite sua procura'
-                    />
-                </View>
-            }
-
-            <TouchableOpacity onPress={handleAddMaça}>
+            <View style={styles.viewTextCompras}>
+                <Text style={styles.textResumeFruits}>Olá, aqui é o resumo do que está no seu carrinho de compras!!</Text>
+            </View>
                 <View style={styles.fruitSelection}>
                     <Image source={MaçaIcon} />
                     <Text style={styles.textFruit}>Maçã</Text>
                     <View style={styles.circleNumberMaça}>
-                        <Text style={styles.textNumber}>{contMaça}</Text>
+                        <Text style={styles.textNumber}></Text>
                     </View>
                 </View>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={handleAddPera}>
                 <View style={styles.fruitSelection}>
                     <Image source={PeraIcon} />
                     <Text style={styles.textFruit}>Pêra</Text>
                     <View style={styles.circleNumberPera}>
-                        <Text style={styles.textNumber}>{contPera}</Text>
+                        <Text style={styles.textNumber}></Text>
                     </View>
                 </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={handleAddBanana}>
                 <View style={styles.fruitSelection}>
                     <Image source={BananaIcon} />
                     <Text style={styles.textFruit}>Banana</Text>
                     <View style={styles.circleNumberBanana}>
-                        <Text style={styles.textNumber}>{contBanana}</Text>
+                        <Text style={styles.textNumber}></Text>
                     </View>
-                </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={handleAddAbacaxi}>
+                </View>      
                 <View style={styles.fruitSelection}>
                     <Image source={AbacaxiIcon} />
                     <Text style={styles.textFruit}>Abacaxi</Text>
                     <View style={styles.circleNumberAbacaxi}>
-                        <Text style={styles.textNumber}>{contAbacaxi}</Text>
+                        <Text style={styles.textNumber}></Text>
                     </View>
                 </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={handleAddManga}>
                 <View style={styles.fruitSelection}>
                     <Image source={MangaIcon} />
                     <Text style={styles.textFruit}>Manga</Text>
                     <View style={styles.circleNumberManga}>
-                        <Text style={styles.textNumber}>{contManga}</Text>
+                        <Text style={styles.textNumber}></Text>
                     </View>
+                </View> 
+
+                <View style={styles.viewResumeCount}>
+                    <Text style={styles.textMoney}>Valor Total: </Text>
                 </View>
-            </TouchableOpacity>
-            <View style={styles.viewButton}>
-                <TouchableOpacity style={styles.buttonRemoveAll} onPress={OpenAlertDelete}>
-                    <Image source={LixeiraIcon} />
-                    <Text style={styles.textButton}>Limpar Tudo</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.buttonAddToCart}>
-                    <Image source={CarrinhoIcon} />
-                    <Text style={styles.textButton}>Colocar no carrinho</Text>
+
+                <View style={styles.viewCupom}>
+                <Text style={styles.textSubtitleMoney}>Possui cupom ou vale?</Text>
+                    <TextInput style={styles.textCupom}
+                        placeholder="código do cupom"
+                        maxLength={6}
+                    />
+                 <TouchableOpacity onPress={handleAddCupom}>
+                     <Text style={styles.textButtonApplyCupom}>Aplicar</Text>
+                 </TouchableOpacity>
+                </View>
+                
+
+            <View style={styles.viewPayments}>
+                <TouchableOpacity style={styles.buttonPay} onPress={handleConfirmPay}>
+                    <Image source={DinheiroIcon} />
+                    <Text style={styles.textButton}>Realizar Pedido</Text>
                 </TouchableOpacity>
 
-            </View>
-            <View style={styles.viewButtonCart}>
-                <TouchableOpacity style={styles.goToCartButton} onPress={openCart}>
-                <Image source={CarrinhoIcon} />
-                </TouchableOpacity>
             </View>
         </View>
     );
 };
 
-export default Home;
+export default Carrinho;
 
 const styles = StyleSheet.create({
     fruitSelection: {
@@ -230,21 +173,18 @@ const styles = StyleSheet.create({
         color: colors.mainBgColor,
         fontWeight: 'bold',
     },
-    viewButton: {
-        justifyContent: 'space-around',
-        // alignItems: 'center',
-        flexDirection: 'row',
-        width: '100%',
-        marginTop: 20
+    viewPayments: {
+        marginTop: 20,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
-    buttonAddToCart: {
-        backgroundColor: colors.action,
-        width: 200,
-        height: 50,
+    buttonPay: {
+        backgroundColor: colors.successDarker,
+        width: 300,
+        height: 60,
         borderRadius: 10,
         justifyContent: 'center',
         alignItems: 'center',
-        flexDirection: 'row'
     },
     buttonRemoveAll: {
         backgroundColor: colors.cancel,
@@ -278,12 +218,52 @@ const styles = StyleSheet.create({
         width: 50,
         borderRadius: 25
     },
-    viewButtonCart:{
-        marginBottom:15,
-        marginRight:15,
-        flex:1,
-        justifyContent:'flex-end',
-        alignItems:'flex-end',
+    viewButtonCart: {
+        marginBottom: 15,
+        marginRight: 15,
+        flex: 1,
+        justifyContent: 'flex-end',
+        alignItems: 'flex-end',
+    },
+
+    viewTextCompras: {
+        width: '100%',
+        justifyContent:'center',
+        alignItems:'center'
+    },
+    textResumeFruits: {
+        fontSize: 16,
+        color: colors.black,
+        fontWeight: '500'
+    },
+    viewResumeCount:{
+        width: '100%',
+        justifyContent:'center',
+        alignItems:'flex-start',
+        paddingTop: 15,
+        paddingLeft:10
+    },
+    textMoney:{
+        fontSize: 20,
+        color: colors.black,
+        fontWeight: 'bold'
+    },
+    textSubtitleMoney:{
+        fontSize: 14,
+        color: colors.black,
+    },
+    viewCupom:{
+        width: '100%',
+        flexDirection:'row',
+        paddingTop: 15,
+        paddingLeft:10
+    },
+    textCupom:{
+        backgroundColor:colors.mainBgColor,
+        height:50,
+    },
+    textButtonApplyCupom:{
+        color:colors.action
     }
 
 });

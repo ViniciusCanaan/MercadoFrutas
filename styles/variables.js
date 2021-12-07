@@ -23,4 +23,10 @@
   
     buttonRed: '#d3492d',
     buttonYellow: '#f7c807',
+
+    maça:'#B22222',
+    pera:'#32CD32',
+    banana:'#FFD700',
+    abacaxi:'#FFA500',
+    manga:'#FF8C00',
   };
