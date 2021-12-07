@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Home from '../screens/Home';
 import MercadoFrutas from "../screens/Login";
 import { colors } from "../styles/variables";
+import { Button } from "react-native";
 
 const LoggedNavigator = createStackNavigator();
 
@@ -26,6 +27,7 @@ export default()=>{
                       fontWeight: 'bold',
                       fontSize:18,
                     },
+                    headerTitleAlign: 'center'
                   }}
             />
         </LoggedNavigator.Navigator>

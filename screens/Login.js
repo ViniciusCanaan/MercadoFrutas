@@ -1,9 +1,11 @@
 import React from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native';
-import logo from '../assets/logo.png'
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, ImageBackground } from 'react-native';
+import logo from '../assets/logo.png';
+import background from '../assets/background.jpg';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import { NavigationContainer } from '@react-navigation/native';
 import { colors } from '../styles/variables';
+
 export default function Login() {
 
   const navigation = useNavigation();
@@ -13,10 +15,10 @@ export default function Login() {
     navigation.navigate('Home')
   }
 
-  return (
-
-    <View style={styles.viewBackground}>
-      <View style={styles.viewLogo}>
+  return(
+  <View style={styles.container}>
+    <ImageBackground source={background} resizeMode="cover" style={styles.image}>
+    <View style={styles.viewLogo}>
         <Image source={logo} style={styles.logo} />
       </View>
 
@@ -25,7 +27,6 @@ export default function Login() {
           style={styles.input}
           placeholder='Digite seu email'
           keyboardType='email-address'
-
         />
         <TextInput
           style={styles.input}
@@ -39,11 +40,26 @@ export default function Login() {
         </TouchableOpacity>
         
       </View>
-    </View>
-  );
-}
-
+    </ImageBackground>
+  </View>
+);
+  }
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  image: {
+    flex: 1,
+    justifyContent: "center"
+  },
+  text: {
+    color: "white",
+    fontSize: 42,
+    lineHeight: 84,
+    fontWeight: "bold",
+    textAlign: "center",
+    backgroundColor: "#000000c0"
+  },
   viewBackground: {
     flex: 1,
     backgroundColor: '#ffffff',
@@ -54,7 +70,8 @@ const styles = StyleSheet.create({
     borderWidth: 0.2,
     padding: 10,
     borderRadius: 5,
-    width: '95%'
+    width: '95%',
+    backgroundColor: colors.mainBgColor
   },
   buttonSignIn: {
     backgroundColor: colors.action,
@@ -78,11 +95,15 @@ const styles = StyleSheet.create({
     alignItems:'center'
   },
   logo: {
-    width: '50%',
-    height: 200
+    width: '80%',
+    height: 300
   },
   viewButton:{
     justifyContent:'center',
     alignItems:'center',
-  }
-})
+  },
+  image: {
+    flex: 1,
+    justifyContent: "center"
+  },
+});

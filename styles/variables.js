@@ -1,11 +1,13 @@
  export const colors = {
     mainBgColor: '#fff',
     headerColor: '#0172bd',
+    backgroundColor: '#e2ecf2',
   
     light: '#f5f5f5',
     dark: '#6b6b6b',
     darker: '#2c2c2c',
     iconsSum: '#b1c3cf',
+    black: '#000000',
   
     action: '#005794',
     actionAlternated: '#f5851f',
