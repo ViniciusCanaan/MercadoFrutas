@@ -10,6 +10,8 @@ import { AbacaxiIcon, BananaIcon, CarrinhoIcon, LixeiraIcon, MangaIcon, MaçaIco
 const Home = () => {
     const navigation = useNavigation();
 
+    const [searchText, setSearchText] = useState('');
+
     const [contAbacaxi, setContAbacaxi] = useState(0);
     const [contMaça, setContMaça] = useState(0);
     const [contPera, setContPera] = useState(0);
@@ -126,13 +128,13 @@ const Home = () => {
         );
     }
 
-    function handleDeleteFruits() {
-        setContAbacaxi(contAbacaxi === 0);
-        setContMaça(contAbacaxi === 0);
-        setContPera(contAbacaxi === 0);
-        setContBanana(contAbacaxi === 0);
-        setContManga(contAbacaxi === 0);
-    }
+    // function handleDeleteFruits() {
+    //     setContAbacaxi(contAbacaxi === 0);
+    //     setContMaça(contAbacaxi === 0);
+    //     setContPera(contAbacaxi === 0);
+    //     setContBanana(contAbacaxi === 0);
+    //     setContManga(contAbacaxi === 0);
+    // }
 
     function handleAddToCart(){
         navigation.navigate('Carrinho',{
@@ -164,7 +166,10 @@ const Home = () => {
             {mostrarCampo &&
                 <View>
                     <TextInput style={styles.searchInput}
-                        placeholder='Digite sua procura'
+                        placeholder='Pesquise a fruta'
+                        value={searchText}
+                        onChangeText={(t) => setSearchText(t)}
+
                     />
                 </View>
             }
@@ -244,10 +249,10 @@ const Home = () => {
                 </View>
             
             <View style={styles.viewButton}>
-                <TouchableOpacity style={styles.buttonRemoveAll} onPress={OpenAlertDelete}>
+                {/* <TouchableOpacity style={styles.buttonRemoveAll} onPress={OpenAlertDelete}>
                     <Image source={LixeiraIcon} />
                     <Text style={styles.textButton}>Limpar Tudo</Text>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
                 <TouchableOpacity style={styles.buttonAddToCart} onPress={handleAddToCart}>
                     <Image source={CarrinhoIcon} />
                     <Text style={styles.textButton}>Colocar no carrinho</Text>

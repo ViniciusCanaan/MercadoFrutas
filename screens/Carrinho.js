@@ -30,7 +30,6 @@ const Carrinho = () => {
 
 
     const [modalVisible, setModalVisible] = useState(false);
-    const [showMaçaInPdf, setShowMaçaInPdf] = useState(false);
 
     function handleAddCupom() {
         Alert.alert(
@@ -99,7 +98,7 @@ const Carrinho = () => {
                     </View>
                     <View style={styles.viewPayments}>
                         <Button
-                        title='Fechar'
+                        title='Fechar e voltar ao início'
                         onPress={handleGoHome}
                         />
                     </View>
@@ -314,7 +313,8 @@ const styles = StyleSheet.create({
         height: '80%',
         backgroundColor: '#B0C4DE',
         alignSelf: 'center',
-        marginTop: 30
+        marginTop: 30,
+        borderRadius:5
     },
     conteudoModal: {
         alignItems: 'center',
