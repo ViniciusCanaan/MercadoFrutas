@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, ImageBackground } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, ImageBackground, Alert } from 'react-native';
 import logo from '../assets/logo.png';
 import background from '../assets/background.jpg';
 import {useNavigation, useRoute} from '@react-navigation/native';
@@ -8,11 +8,21 @@ import { colors } from '../styles/variables';
 
 export default function Login() {
 
+  const login = 'testeframe@gmail.com';
+  const senha = '123456';
+  const [email , setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
   const navigation = useNavigation();
   const route = useRoute();
 
   function handleLogin(){
-    navigation.navigate('Home')
+    if(email === login && password === senha){
+      navigation.navigate('Home')
+    } else{
+      Alert.alert('Alerta','Login ou senha inválidos');
+    }
+    
   }
 
   return(
@@ -27,11 +37,15 @@ export default function Login() {
           style={styles.input}
           placeholder='Digite seu email'
           keyboardType='email-address'
+          value={email}
+          onChangeText={t=>setEmail(t)}
         />
         <TextInput
           style={styles.input}
           placeholder='Digite sua senha'
           secureTextEntry
+          value={password}
+          onChangeText={t=>setPassword(t)}
         />
       </View>
       <View style={styles.viewButton}>

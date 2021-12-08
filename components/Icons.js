@@ -7,4 +7,6 @@ export {default as CarrinhoIcon} from '../assets/images/icons/carrinho.png';
 export {default as LixeiraIcon} from '../assets/images/icons/lixeira.png';
 export {default as LupaIcon} from '../assets/images/icons/search.png';
 export {default as DinheiroIcon} from '../assets/images/icons/dinheiro.png';
+export {default as AdicionarIcon} from '../assets/images/icons/adicionar.png';
+export {default as RetirarIcon} from '../assets/images/icons/remove.png';
 

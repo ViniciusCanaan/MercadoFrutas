@@ -5,21 +5,21 @@ import {
 import { StyleSheet, Text, View, Image, Alert, Button } from 'react-native';
 import { ScrollView, TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 import { colors } from '../styles/variables';
-import { AbacaxiIcon, BananaIcon, MangaIcon, MaçaIcon, PeraIcon, DinheiroIcon } from '../components/Icons';
+import { AbacaxiIcon, BananaIcon, MangaIcon, MaçaIcon, PeraIcon } from '../components/Icons';
 
 const Carrinho = () => {
 
-    function handleAddCupom(){
+    function handleAddCupom() {
         Alert.alert(
             "Cupom Indisponível",
             "Tente novamente mais tarde",
             [
-              { text: "OK", onPress: () => console.log("Pressionou cupom") }
+                { text: "OK", onPress: () => console.log("Pressionou cupom") }
             ]
-          );
+        );
     }
 
-    function handleConfirmPay(){
+    function handleConfirmPay() {
         Alert.alert(
             "Podemos fechar seu pedido?",
             "Você tem certeza da sua compra?",
@@ -28,10 +28,10 @@ const Carrinho = () => {
                     text: "Cancelar",
                     onPress: () => console.log("Cancelou Pedido"),
                     style: "cancel"
-                  },
-              { text: "Comprar", onPress: () => console.log("Pedido Efetuado") }
+                },
+                { text: "Comprar", onPress: () => console.log("Pedido Efetuado") }
             ]
-          );
+        );
     }
 
     return (
@@ -59,7 +59,7 @@ const Carrinho = () => {
                     <View style={styles.circleNumberBanana}>
                         <Text style={styles.textNumber}></Text>
                     </View>
-                </View>      
+                </View>
                 <View style={styles.fruitSelection}>
                     <Image source={AbacaxiIcon} />
                     <Text style={styles.textFruit}>Abacaxi</Text>
@@ -73,30 +73,28 @@ const Carrinho = () => {
                     <View style={styles.circleNumberManga}>
                         <Text style={styles.textNumber}></Text>
                     </View>
-                </View> 
-
-                <View style={styles.viewResumeCount}>
-                    <Text style={styles.textMoney}>Valor Total: </Text>
                 </View>
 
+            <View style={styles.viewStepPayments}>
+                <View style={styles.viewResumeCount}>
+                    <Text style={styles.textMoney}>Total do pedido: </Text>
+                </View>
                 <View style={styles.viewCupom}>
-                <Text style={styles.textSubtitleMoney}>Possui cupom ou vale?</Text>
+                    <Text style={styles.textSubtitleMoney}>Possui cupom ou vale?</Text>
                     <TextInput style={styles.textCupom}
                         placeholder="código do cupom"
                         maxLength={6}
                     />
-                 <TouchableOpacity onPress={handleAddCupom}>
-                     <Text style={styles.textButtonApplyCupom}>Aplicar</Text>
-                 </TouchableOpacity>
+                    <TouchableOpacity onPress={handleAddCupom}>
+                        <Text style={styles.textButtonApplyCupom}>Aplicar</Text>
+                    </TouchableOpacity>
                 </View>
-                
+                <View style={styles.viewPayments}>
+                    <TouchableOpacity style={styles.buttonPay} onPress={handleConfirmPay}>
+                        <Text style={styles.textButton}>Realizar Pedido</Text>
+                    </TouchableOpacity>
 
-            <View style={styles.viewPayments}>
-                <TouchableOpacity style={styles.buttonPay} onPress={handleConfirmPay}>
-                    <Image source={DinheiroIcon} />
-                    <Text style={styles.textButton}>Realizar Pedido</Text>
-                </TouchableOpacity>
-
+                </View>
             </View>
         </View>
     );
@@ -180,90 +178,60 @@ const styles = StyleSheet.create({
     },
     buttonPay: {
         backgroundColor: colors.successDarker,
-        width: 300,
-        height: 60,
-        borderRadius: 10,
+        width: 350,
+        height: 40,
+        borderRadius: 5,
         justifyContent: 'center',
         alignItems: 'center',
-    },
-    buttonRemoveAll: {
-        backgroundColor: colors.cancel,
-        width: 150,
-        height: 50,
-        borderRadius: 10,
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexDirection: 'row'
     },
     textButton: {
         fontSize: 16,
         color: '#ffffff',
         fontWeight: 'bold'
     },
-    lupaIcon: {
-        marginRight: 30
-    },
-    searchInput: {
-        borderRadius: 10,
-        backgroundColor: colors.mainBgColor,
-        borderWidth: 0.3,
-        height: 40,
-        paddingLeft: 10,
-    },
-    goToCartButton: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: colors.headerColor,
-        height: 50,
-        width: 50,
-        borderRadius: 25
-    },
-    viewButtonCart: {
-        marginBottom: 15,
-        marginRight: 15,
-        flex: 1,
-        justifyContent: 'flex-end',
-        alignItems: 'flex-end',
-    },
-
     viewTextCompras: {
         width: '100%',
-        justifyContent:'center',
-        alignItems:'center'
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     textResumeFruits: {
         fontSize: 16,
         color: colors.black,
         fontWeight: '500'
     },
-    viewResumeCount:{
+    viewResumeCount: {
         width: '100%',
-        justifyContent:'center',
-        alignItems:'flex-start',
+        justifyContent: 'center',
+        alignItems: 'flex-start',
         paddingTop: 15,
-        paddingLeft:10
+        paddingLeft: 10
     },
-    textMoney:{
+    textMoney: {
         fontSize: 20,
         color: colors.black,
         fontWeight: 'bold'
     },
-    textSubtitleMoney:{
+    textSubtitleMoney: {
         fontSize: 14,
         color: colors.black,
     },
-    viewCupom:{
+    viewCupom: {
         width: '100%',
-        flexDirection:'row',
+        flexDirection: 'row',
         paddingTop: 15,
-        paddingLeft:10
+        paddingLeft: 10
     },
-    textCupom:{
-        backgroundColor:colors.mainBgColor,
-        height:50,
+    textCupom: {
+        backgroundColor: colors.mainBgColor,
+        height: 35,
     },
-    textButtonApplyCupom:{
-        color:colors.action
+    textButtonApplyCupom: {
+        color: colors.action
+    },
+    viewStepPayments: {
+        backgroundColor: colors.mainBgColor,
+        flex: 2,
+        marginTop: 10,
+        borderRadius: 10
     }
-
 });
