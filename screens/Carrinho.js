@@ -88,12 +88,43 @@ const Carrinho = () => {
                     
                     <View style={styles.viewSubtitulo}>
                         <Text style={styles.subtituloComprovante}>Segue o resumo das suas compras:</Text>
-                        <Text style={styles.subtituloComprovante}>Maçã: R$ {valorMaça}</Text>
+                        {valorMaça > 0 ? (
+                            <Text style={styles.subtituloComprovante}>Maçã: R$ {valorMaça}</Text>
+                        ):(
+                            <View></View>
+                        )}
+
+                        {valorPera > 0 ? (
+                            <Text style={styles.subtituloComprovante}>Pêra: R$ {valorPera}</Text>
+                        ):(
+                            <View></View>
+                        )}
+
+                        {valorBanana > 0 ? (
+                            <Text style={styles.subtituloComprovante}>Banana : R$ {valorBanana}</Text>
+                        ):(
+                            <View></View>
+                        )}
+
+                        {valorAbacaxi > 0 ? (
+                            <Text style={styles.subtituloComprovante}>Abacaxi : R$ {valorAbacaxi}</Text>
+                        ):(
+                            <View></View>
+                        )}
+
+                        {valorManga > 0 ? (
+                            <Text style={styles.subtituloComprovante}>Manga : R$ {valorManga}</Text>
+                        ):(
+                            <View></View>
+                        )}
+                        <Text style={styles.valorNotaFiscal}>Valor : R$ {totalDoPedido.toFixed(2)}</Text>
+
+                        {/* <Text style={styles.subtituloComprovante}>Maçã: R$ {valorMaça}</Text>
                         <Text style={styles.subtituloComprovante}>Pêra: R$ {valorPera}</Text>
                         <Text style={styles.subtituloComprovante}>Banana : R$ {valorBanana}</Text>
                         <Text style={styles.subtituloComprovante}>Abacaxi : R$ {valorAbacaxi}</Text>
                         <Text style={styles.subtituloComprovante}>Manga : R$ {valorManga}</Text>
-                        <Text style={styles.valorNotaFiscal}>Valor : R$ {totalDoPedido.toFixed(2)}</Text>
+                        <Text style={styles.valorNotaFiscal}>Valor : R$ {totalDoPedido.toFixed(2)}</Text> */}
 
                     </View>
                     <View style={styles.viewPayments}>
@@ -108,7 +139,71 @@ const Carrinho = () => {
             <View style={styles.viewTextCompras}>
                 <Text style={styles.textResumeFruits}>Olá, aqui é o resumo do que está no seu carrinho de compras!!</Text>
             </View>
-            <View style={styles.fruitSelection}>
+            {contMaça > 0 ? (
+                <View style={styles.fruitSelection}>
+                <Image source={MaçaIcon} />
+                <Text style={styles.textFruit}>Maçã</Text>
+                <View style={styles.circleNumberMaça}>
+                    <Text style={styles.textNumber}>{contMaça}</Text>
+                </View>
+                <Text>R${valorMaça}</Text>
+            </View>
+            ):(
+                <View></View>
+            )}
+
+            {contPera > 0 ? (
+                 <View style={styles.fruitSelection}>
+                 <Image source={PeraIcon} />
+                 <Text style={styles.textFruit}>Pêra</Text>
+                 <View style={styles.circleNumberPera}>
+                     <Text style={styles.textNumber}>{contPera}</Text>
+                 </View>
+                 <Text>R${valorPera}</Text>
+             </View>
+            ):(
+                <View></View>
+            )}
+
+            {contBanana > 0 ? (
+                 <View style={styles.fruitSelection}>
+                 <Image source={BananaIcon} />
+                 <Text style={styles.textFruit}>Banana</Text>
+                 <View style={styles.circleNumberBanana}>
+                     <Text style={styles.textNumber}>{contBanana}</Text>
+                 </View>
+                 <Text>R${valorBanana}</Text>
+             </View>
+            ):(
+                <View></View>
+            )}
+
+            {contAbacaxi > 0 ? (
+                <View style={styles.fruitSelection}>
+                <Image source={AbacaxiIcon} />
+                <Text style={styles.textFruit}>Abacaxi</Text>
+                <View style={styles.circleNumberAbacaxi}>
+                    <Text style={styles.textNumber}>{contAbacaxi}</Text>
+                </View>
+                <Text>R${valorAbacaxi}</Text>
+            </View>
+            ):(
+                <View></View>
+            )}
+
+            {contManga > 0 ? (
+                 <View style={styles.fruitSelection}>
+                 <Image source={MangaIcon} />
+                 <Text style={styles.textFruit}>Manga</Text>
+                 <View style={styles.circleNumberManga}>
+                     <Text style={styles.textNumber}>{contManga}</Text>
+                 </View>
+                 <Text>R${valorManga}</Text>
+             </View>
+            ):(
+                <View></View>
+            )}
+            {/* <View style={styles.fruitSelection}>
                 <Image source={MaçaIcon} />
                 <Text style={styles.textFruit}>Maçã</Text>
                 <View style={styles.circleNumberMaça}>
@@ -147,7 +242,7 @@ const Carrinho = () => {
                     <Text style={styles.textNumber}>{contManga}</Text>
                 </View>
                 <Text>R${valorManga}</Text>
-            </View>
+            </View> */}
 
             <View style={styles.viewStepPayments}>
                 <View style={styles.viewResumeCount}>
