@@ -185,7 +185,7 @@ const Home = () => {
                     <View style={styles.circleNumberMaça}>
                         <Text style={styles.textNumber}>{contMaça}</Text>
                     </View>
-                    <Text>R${valorMaça}</Text>
+                    <Text>R${valorMaça.toFixed(2)}</Text>
                 </View>   
 
                 <View style={styles.fruitSelection}>
@@ -200,7 +200,7 @@ const Home = () => {
                     <View style={styles.circleNumberPera}>
                         <Text style={styles.textNumber}>{contPera}</Text>
                     </View>
-                    <Text>R${valorPera}</Text>
+                    <Text>R${valorPera.toFixed(2)}</Text>
                 </View>
            
                 <View style={styles.fruitSelection}>
@@ -215,7 +215,7 @@ const Home = () => {
                     <View style={styles.circleNumberBanana}>
                         <Text style={styles.textNumber}>{contBanana}</Text>
                     </View>
-                    <Text>R${valorBanana}</Text>
+                    <Text>R${valorBanana.toFixed(2)}</Text>
                 </View>
            
                 <View style={styles.fruitSelection}>
@@ -230,7 +230,7 @@ const Home = () => {
                     <View style={styles.circleNumberAbacaxi}>
                         <Text style={styles.textNumber}>{contAbacaxi}</Text>
                     </View>
-                    <Text>R${valorAbacaxi}</Text>
+                    <Text>R${valorAbacaxi.toFixed(2)}</Text>
                 </View>
             
                 <View style={styles.fruitSelection}>
@@ -245,7 +245,7 @@ const Home = () => {
                     <View style={styles.circleNumberManga}>
                         <Text style={styles.textNumber}>{contManga}</Text>
                     </View>
-                    <Text>R${valorManga}</Text>
+                    <Text>R${valorManga.toFixed(2)}</Text>
                 </View>
             
             <View style={styles.viewButton}>
