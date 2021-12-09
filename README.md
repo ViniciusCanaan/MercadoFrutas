@@ -10,5 +10,5 @@ Primeiramente essa é a tela de login:
 Usuário: testeframe@gmail.com
 Senha: 123456
 
-![img](https://i.imgur.com/zTKBQag.png)
+![img width:200](https://i.imgur.com/zTKBQag.png)
 
