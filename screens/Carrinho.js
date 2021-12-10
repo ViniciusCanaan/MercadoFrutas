@@ -3,13 +3,16 @@ import {
     useNavigation,
     useRoute
 } from '@react-navigation/native';
-import { StyleSheet, Text, View, Image, Alert, Button, Modal, Pressable } from 'react-native';
+import { StyleSheet, Text, View, Image, Alert, Button, Modal, Pressable,PermissionsAndroid,Platform } from 'react-native';
 import { ScrollView, TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 import { colors } from '../styles/variables';
 import { AbacaxiIcon, BananaIcon, MangaIcon, MaçaIcon, PeraIcon } from '../components/Icons';
 import logo from '../assets/logo.png';
 
+import RNHTMLtoPDF from 'react-native-html-to-pdf';
+
 const Carrinho = () => {
+    const [filePath, setFilePath] = useState('');
     const navigation = useNavigation();
     const route = useRoute();
 
@@ -30,6 +33,7 @@ const Carrinho = () => {
 
 
     const [modalVisible, setModalVisible] = useState(false);
+    const [modalVisibleConfirmPDF, setModalVisibleConfirmPDF] = useState(false);
 
     function handleAddCupom() {
         Alert.alert(
@@ -66,11 +70,48 @@ const Carrinho = () => {
        
     }
 
-    function handleGoHome(){
-        setModalVisible(false);
-        navigation.navigate('Home')
-    }
 
+    const isPermitted = async () => {
+        if (Platform.OS === 'android') {
+          try {
+            const granted = await PermissionsAndroid.request(
+              PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+              {
+                title: 'External Storage Write Permission',
+                message: 'App needs access to Storage data',
+              },
+            );
+            return granted === PermissionsAndroid.RESULTS.GRANTED;
+          } catch (err) {
+            alert('Write permission err', err);
+            return false;
+          }
+        } else {
+          return true;
+        }
+      };
+
+    const handleGoHome = async () => {
+        if (await isPermitted()) {
+          let options = {
+            
+            //Content to print
+            html: `<h1 style="text-align: center;"><strong>Comprovante</strong></h1><p style="text-align: center;">Aqui está o resumo da sua compra</p><p><strong>${contAbacaxi}x Abacaxi: R$ ${valorAbacaxi.toFixed(2)}</strong></p><p><strong>${contMaça}x Maça: R$ ${valorMaça.toFixed(2)}</strong></p><p><strong>${contPera}x Pera: R$ ${valorPera.toFixed(2)}</strong></p><p><strong>${contBanana}x Banana: R$ ${valorBanana.toFixed(2)}</strong></p><p><strong>${contManga}x Manga: R$ ${valorManga.toFixed(2)}</strong></p><p><strong>Total Pago: ${totalDoPedido.toFixed(2)}</strong></p>`
+             ,
+            //File Name
+            fileName: 'Comprovante',
+            //File directory
+            directory: 'Documents',
+          };
+          
+          let file = await RNHTMLtoPDF.convert(options);
+          console.log(file.filePath);
+          setFilePath(file.filePath);
+          setModalVisible(false);
+          navigation.navigate('Home');
+          Alert.alert('Pronto!!','O PDF de comprovante da sua compra está salvo nos seus documentos')
+        }
+      };
 
     return (
         <View style={styles.viewResumeFruits}>
@@ -118,6 +159,7 @@ const Carrinho = () => {
                             <View></View>
                         )}
                         <Text style={styles.valorNotaFiscal}>Valor : R$ {totalDoPedido.toFixed(2)}</Text>
+                        <Text style={styles.textStyle}>{filePath}</Text>
 
                         {/* <Text style={styles.subtituloComprovante}>Maçã: R$ {valorMaça}</Text>
                         <Text style={styles.subtituloComprovante}>Pêra: R$ {valorPera}</Text>
@@ -129,13 +171,17 @@ const Carrinho = () => {
                     </View>
                     <View style={styles.viewPayments}>
                         <Button
-                        title='Fechar e voltar ao início'
+                        title='Gerar PDF e voltar ao início'
                         onPress={handleGoHome}
                         />
                     </View>
                 </View>
 
             </Modal>
+
+            
+
+
             <View style={styles.viewTextCompras}>
                 <Text style={styles.textResumeFruits}>Olá, aqui é o resumo do que está no seu carrinho de compras!!</Text>
             </View>

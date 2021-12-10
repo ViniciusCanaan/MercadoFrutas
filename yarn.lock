@@ -5436,6 +5436,11 @@
     "lodash" "^4.17.21"
     "prop-types" "^15.7.2"
 
+"react-native-html-to-pdf@^0.11.0":
+  "integrity" "sha512-hbbCBkgGD0ctevd1CxP++ZeBqQZGSC52x65W+OVJ91cnTosUGD/zjAjKeuA4tOIndhFDx9IJD2JIYruRSt71HQ=="
+  "resolved" "https://registry.npmjs.org/react-native-html-to-pdf/-/react-native-html-to-pdf-0.11.0.tgz"
+  "version" "0.11.0"
+
 "react-native-safe-area-context@^3.3.2", "react-native-safe-area-context@>= 3.0.0":
   "integrity" "sha512-yOwiiPJ1rk+/nfK13eafbpW6sKW0jOnsRem2C1LPJjM3tfTof6hlvV5eWHATye3XOpu2cJ7N+HdkUvUDGwFD2Q=="
   "resolved" "https://registry.npmjs.org/react-native-safe-area-context/-/react-native-safe-area-context-3.3.2.tgz"
