@@ -43,9 +43,15 @@ Ao Clicar no botão de realizar pedido irá pedir ao usuário para confirmar se 
 
 Caso ele realmente clique em comprar exibirá um Modal com os dados da compra. 
  
-<img src="https://i.imgur.com/QByvFUJ.png" width="350" title="hover text">
+<img src="https://i.imgur.com/gGjpJq1.png" width="350" title="hover text">
 
-Quando o usuário clicar em "Fechar e voltar ao início" ele será redirecionado novamente para a tela de lista de frutas.
+Quando o usuário clicar em "Gerar PDF e voltar ao início" ele será redirecionado novamente para a tela de lista de frutas, exibindo o alerta que seu pdf foi armazenado.
+
+<img src="https://i.imgur.com/sGR8tKJ.png" width="350" title="hover text">
+
+Ao entrar nos documento do dispositivo estará o PDF gerado.
+
+<img src="https://i.imgur.com/Vy6akTm.png" width="350" title="hover text">
 
 
 <h1>Obrigado pela oportunidade!<h1/>
