@@ -1,5 +1,4 @@
 # MercadoFrutas
-Projeto de Processo Seletivo da Framework
 
 Olá Pessoal, tudo bem?
 
@@ -54,7 +53,6 @@ Ao entrar nos documento do dispositivo estará o PDF gerado.
 <img src="https://i.imgur.com/Vy6akTm.png" width="350" title="hover text">
 
 
-<h1>Obrigado pela oportunidade!<h1/>
 
 
 
